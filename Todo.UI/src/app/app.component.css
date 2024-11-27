@@ -1,0 +1,125 @@
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+.sidebar {
+  background-color: #24285c;
+  font-size: 25px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidebar-items {
+  display: block;
+}
+
+.sidebar-item {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.delete-xmark:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.sidebar-items p:hover {
+  color: #e0dd0c;
+  cursor: pointer;
+}
+
+.delete-xmark {
+  color: palevioletred;
+  align-content: center;
+}
+
+.complete-check {
+  color:palegreen;
+  align-content: center;
+}
+
+.complete-check:hover {
+  color: green;
+  align-content: center;
+  cursor: pointer;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #DADADA;
+  background-color: white;
+  padding-left: 50px;
+  padding-right: 40px;
+  min-height: 90px;
+}
+
+.textInput {
+  width: 50%;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-align: center;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bg-light {
+  background-color: #e7e7e7;
+}
+
+.main-body {
+  text-align: center;
+  padding: 40px;
+  margin: 20px 40px 6px;
+  background-color: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  position: relative;
+}
+
+.main-body-items {
+  text-align: center;
+  padding: 8px 8px 8px 32px;
+  font-size: 25px;
+  display: block;
+  transition: 0.3s;
+  list-style-type: none;
+}
+
+.main-body-item {
+  display: flex;
+  justify-content: center;
+}
+
+.main-body-item-icons {
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 1rem;
+}
+
+.main-body-item p:hover {
+  color: #1F55A5;
+  cursor: move;
+}
+
+@media (min-width: 641px) {
+  .page {
+    flex-direction: row;
+  }
+
+  .sidebar {
+    width: 270px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+}

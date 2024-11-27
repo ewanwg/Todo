@@ -1,0 +1,63 @@
+<div class = "page">
+  <section class="sidebar">
+    @if (1!=1) {
+
+    }
+    @else {
+      <div class="sidebar-items">
+        <div class="sidebar-item">
+          <p>List 1</p>
+          <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+        </div>
+        <div class="sidebar-item">
+          <p>List 2</p>
+          <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+        </div>
+      </div>
+    }
+  </section>
+
+  <main class="bg-light">
+    <section class="header">
+      @if (1!=1) {
+        <input type="text" class="textInput" placeholder="Type your list name and press enter">
+      }
+      @else {
+        <input type="text" class="textInput" placeholder="Type your list item and press enter">
+      }
+    </section>
+    <section class="main-body">
+      <div class="main-body-items">
+        <div class="main-body-item">
+          <p>Item 1</p>
+          <div class="main-body-item-icons">
+            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
+            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+          </div>
+        </div>
+        <div class="main-body-item">
+          <p>Item 2</p>
+          <div class="main-body-item-icons">
+            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
+            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+          </div>
+        </div>
+        <div class="main-body-item">
+          <p>Item 3</p>
+          <div class="main-body-item-icons">
+            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
+            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+          </div>
+        </div>
+        <div class="main-body-item">
+          <p>Item 4</p>
+          <div class="main-body-item-icons">
+            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
+            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </section>
+  </main>
+</div>
