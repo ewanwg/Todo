@@ -27,35 +27,13 @@
       }
     </section>
     <section class="main-body">
-      <div cdkDropList class="main-body-items">
-        <div class="main-body-item">
-          <p>Item 1</p>
-          <div class="main-body-item-icons">
+      <div cdkDropList class="main-body-items" (cdkDropListDropped)="drop($event)">
+        @for (item of items; track item){
+          <div class="main-body-item" cdkDrag>{{item}}
             <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
             <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
           </div>
-        </div>
-        <div class="main-body-item">
-          <p>Item 2</p>
-          <div class="main-body-item-icons">
-            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
-            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
-          </div>
-        </div>
-        <div class="main-body-item">
-          <p>Item 3</p>
-          <div class="main-body-item-icons">
-            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
-            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
-          </div>
-        </div>
-        <div class="main-body-item">
-          <p>Item 4</p>
-          <div class="main-body-item-icons">
-            <fa-icon [icon]="faCheck" class="complete-check"></fa-icon>
-            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
-          </div>
-        </div>
+        }
         <router-outlet></router-outlet>
       </div>
     </section>
