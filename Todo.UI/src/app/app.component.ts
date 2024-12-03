@@ -29,6 +29,7 @@ export class AppComponent {
     { id: 3, text: 'Item 3', completed: false },
   ];
   newText: string = '';
+  newList: string = '';
 
   lists = [
     { id: 1, text: 'List 1' },
@@ -72,14 +73,14 @@ export class AppComponent {
   }
 
   addList(): void {
-    if (this.newText.trim()) {
+    if (this.newList.trim()) {
       const newList = {
         id: this.lists.length + 1,
-        text: this.newText.trim(),
+        text: this.newList.trim(),
       };
 
       this.lists.push(newList);
-      this.newText = '';
+      this.newList = '';
     }
   }
 }

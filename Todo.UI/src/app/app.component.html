@@ -8,7 +8,7 @@
           </div>
         }
         @if (!isArrayEmpty(lists)) {
-          <input type="text" [(ngModel)]="newText" class="sidebarInput" placeholder="Type your list name and press enter" (keydown.enter)="addList()">
+          <input type="text" [(ngModel)]="newList" class="sidebarInput" placeholder="New list..." (keydown.enter)="addList()">
         }
       </div>
   </section>
@@ -16,7 +16,7 @@
   <main class="bg-light">
     <section class="header">
       @if (isArrayEmpty(lists)) {
-        <input type="text" [(ngModel)]="newText" class="textInput" placeholder="Type your list name and press enter" (keydown.enter)="addList()">
+        <input type="text" [(ngModel)]="newList" class="textInput" placeholder="Type your list name and press enter" (keydown.enter)="addList()">
       }
       @else {
         <input type="text" [(ngModel)]="newText" class="textInput" placeholder="Type your list item and press enter" (keydown.enter)="addItem()">
