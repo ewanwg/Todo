@@ -50,6 +50,14 @@ export class AppComponent {
     this.items = this.items.filter((i) => i.id !== id);
   }
 
+  deleteList(id: number) {
+    this.lists = this.lists.filter((i) => i.id !== id);
+  }
+
+  isArrayEmpty(arrayName: any): boolean {
+    return arrayName.length === 0;
+  }
+
   addItem(): void {
     if (this.newText.trim()) {
       const newItem = {
@@ -59,6 +67,18 @@ export class AppComponent {
       };
 
       this.items.push(newItem);
+      this.newText = '';
+    }
+  }
+
+  addList(): void {
+    if (this.newText.trim()) {
+      const newList = {
+        id: this.lists.length + 1,
+        text: this.newText.trim(),
+      };
+
+      this.lists.push(newList);
       this.newText = '';
     }
   }

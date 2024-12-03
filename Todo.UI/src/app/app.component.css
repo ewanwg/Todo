@@ -30,7 +30,7 @@ main {
   cursor: pointer;
 }
 
-.sidebar-items :hover {
+.sidebar-item:hover {
   color: #e0dd0c;
   cursor: pointer;
 }
