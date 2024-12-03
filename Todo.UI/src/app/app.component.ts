@@ -30,6 +30,11 @@ export class AppComponent {
   ];
   newText: string = '';
 
+  lists = [
+    { id: 1, text: 'List 1' },
+    { id: 2, text: 'List 2' },
+  ];
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
   }

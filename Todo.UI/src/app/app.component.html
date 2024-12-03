@@ -4,15 +4,13 @@
 
     }
     @else {
-      <div class="sidebar-items">
-        <div class="sidebar-item">
-          <p>List 1</p>
-          <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
-        </div>
-        <div class="sidebar-item">
-          <p>List 2</p>
-          <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
-        </div>
+      <div cdkDropList class="sidebar-items" (cdkDropListDropped)="drop($event)">
+        @for (list of lists; track list){
+          <div class="sidebar-item" cdkDrag>
+            {{list.text}}
+            <fa-icon [icon]="faXmark" class="delete-xmark"></fa-icon>
+          </div>
+        }
       </div>
     }
   </section>
