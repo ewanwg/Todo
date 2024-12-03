@@ -7,6 +7,9 @@
             <fa-icon [icon]="faXmark" class="delete-xmark" (click)="deleteList(list.id)"></fa-icon>
           </div>
         }
+        @if (!isArrayEmpty(lists)) {
+          <input type="text" [(ngModel)]="newText" class="sidebarInput" placeholder="Type your list name and press enter" (keydown.enter)="addList()">
+        }
       </div>
   </section>
 
