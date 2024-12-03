@@ -23,15 +23,15 @@
         <input type="text" class="textInput" placeholder="Type your list name and press enter">
       }
       @else {
-        <input type="text" class="textInput" placeholder="Type your list item and press enter">
+        <input type="text" [(ngModel)]="newText" class="textInput" placeholder="Type your list item and press enter" (keydown.enter)="addItem()">
       }
     </section>
     <section class="main-body">
       <div cdkDropList class="main-body-items" (cdkDropListDropped)="drop($event)">
         @for (item of items; track item){
           <div class="main-body-item" cdkDrag [ngStyle]="{'text-decoration': item.completed ? 'line-through' : 'none'}">{{item.text}}
-            <fa-icon [icon]="faCheck" class="complete-check" (click)="toggleComplete($index)"></fa-icon>
-            <fa-icon [icon]="faXmark" class="delete-xmark" (click)="deleteItem($index)"></fa-icon>
+            <fa-icon [icon]="faCheck" class="complete-check" (click)="toggleComplete(item.id)"></fa-icon>
+            <fa-icon [icon]="faXmark" class="delete-xmark" (click)="deleteItem(item.id)"></fa-icon>
           </div>
         }
         <router-outlet></router-outlet>
