@@ -12,6 +12,9 @@ namespace Todo.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ListTitle>().ToTable(nameof(ListTitle));
+            modelBuilder.Entity<ListItem>().ToTable(nameof(ListItem));
+
             modelBuilder.Entity<ListTitle>()
                 .HasMany(lt => lt.Items)
                 .WithOne(li => li.ListTitle)
