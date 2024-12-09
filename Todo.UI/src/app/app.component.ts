@@ -6,6 +6,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkDragDrop, CdkDropList, CdkDrag, moveItemInArray } from '@angular/cdk/drag-drop';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -28,13 +29,18 @@ export class AppComponent {
     { id: 2, text: 'Item 2', completed: false },
     { id: 3, text: 'Item 3', completed: false },
   ];
-  newText: string = '';
-  newList: string = '';
-
   lists = [
     { id: 1, text: 'List 1' },
     { id: 2, text: 'List 2' },
   ];
+  newText: string = '';
+  newList: string = '';
+
+  apiurl: string = 'https://localhost:7034/api';
+
+  ngOnInit(): void {
+
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.items, event.previousIndex, event.currentIndex);
@@ -84,4 +90,3 @@ export class AppComponent {
     }
   }
 }
-
