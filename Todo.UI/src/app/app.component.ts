@@ -38,8 +38,16 @@ export class AppComponent {
 
   apiurl: string = 'https://localhost:7034/api';
 
-  ngOnInit(): void {
+  constructor  (
+    private httpClient: HttpClient,
+  ) {}
 
+  ngOnInit(): void {
+    this.httpClient.get<any>(
+      `${this.apiurl}/listtitle`
+    ).subscribe((response) => {
+      console.log(response);
+    })
   }
 
   drop(event: CdkDragDrop<string[]>) {
