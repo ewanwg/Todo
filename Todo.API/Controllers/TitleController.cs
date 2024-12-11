@@ -16,9 +16,11 @@ namespace Todo.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ListTitle>>> GetListTitles()
+        public async Task<ActionResult<List<ListTitle>>> GetListTitles()
         {
-            return await _context.ListTitles.Include(lt => lt.Items).ToListAsync();
+            var a = await _context.ListTitles.Include(lt => lt.Items).ToListAsync();
+
+            return a;
         }
 
         [HttpGet("{id}")]
@@ -28,7 +30,6 @@ namespace Todo.API.Controllers
 
             if (listTitle == null)
                 return NotFound();
-
 
             return listTitle;
         }
