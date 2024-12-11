@@ -9,7 +9,6 @@ namespace Todo.API.DTOs
             return new ListItemDTO
             {
                 Id = listItem.Id,
-                ListTitleId = listItem.ListTitleId,
                 Item = listItem.Item,
                 IsComplete = listItem.IsComplete
             };

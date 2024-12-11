@@ -6,10 +6,17 @@ namespace Todo.API.DTOs
     {
         public static ListTitleDTO MapToDTO(ListTitle listTitle)
         {
+            var listItems = new List<ListItemDTO>();
+            foreach (var item in listTitle.Items) 
+            {
+                listItems.Add(ListItemMapper.MapToDTO(item));
+            }
+
             return new ListTitleDTO
             {
                 Id = listTitle.Id,
-                Title = listTitle.Title
+                Title = listTitle.Title,
+                ListItems = listItems
             };
         }
     }
