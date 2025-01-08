@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Todo.API.Data;
+using Todo.API.DTOs;
 using Todo.API.Entities;
 
 namespace Todo.API.Controllers
@@ -12,31 +13,29 @@ namespace Todo.API.Controllers
     public class ItemController : ControllerBase
     {
         private readonly TodoContext _context;
+        private readonly ListItemDataService _itemDataService;
 
-        public ItemController(TodoContext context)
+        public ItemController(TodoContext context, ListItemDataService itemDataService)
         {
             _context = context;
+            _itemDataService = itemDataService;
         }
 
         // GET: api/ListItem
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ListItem>>> GetListItems()
+        public async Task<ActionResult<IEnumerable<ListItemDTO>>> GetListItems()
         {
-            return await _context.ListItems.ToListAsync();
+            var items = await _itemDataService.GetAllListItems();
+            return Ok(items);
         }
 
         // GET: api/ListItem/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ListItem>> GetListItem(int id)
+        public async Task<ActionResult<ListItemDTO>> GetListItem(int id)
         {
-            var listItem = await _context.ListItems.FindAsync(id);
+            var listItem = await _itemDataService.GetListItemId(id);
+            return Ok(listItem);
 
-            if (listItem == null)
-            {
-                return NotFound();
-            }
-
-            return listItem;
         }
 
         // GET: api/ListItem/byListTitle/1

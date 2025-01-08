@@ -19,5 +19,12 @@ namespace Todo.API.DTOs
         {
             return await _context.ListItems.Select(item => ListItemDTO.MapToDTO(item)).ToListAsync();
         }
+
+        public async Task<ActionResult<ListItemDTO>> GetListItemId(int id)
+        {
+            var listItem = await _context.ListItems.FindAsync(id);
+
+            return ListItemDTO.MapToDTO(listItem);
+        }
     }
 }
