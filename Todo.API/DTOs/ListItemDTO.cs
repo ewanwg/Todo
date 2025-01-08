@@ -1,9 +1,21 @@
-﻿namespace Todo.API.DTOs
+﻿using Todo.API.Entities;
+
+namespace Todo.API.DTOs
 {
     public class ListItemDTO
     {
         public int Id { get; set; }
         public required string Item { get; set; }
         public bool IsComplete { get; set; }
+
+        public static ListItemDTO MapToDTO(ListItem listItem)
+        {
+            return new ListItemDTO
+            {
+                Id = listItem.Id,
+                Item = listItem.Item,
+                IsComplete = listItem.IsComplete
+            };
+        }
     }
 }
