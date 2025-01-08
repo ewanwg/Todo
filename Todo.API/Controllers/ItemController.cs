@@ -40,44 +40,32 @@ namespace Todo.API.Controllers
 
         // GET: api/ListItem/byListTitle/1
         [HttpGet("byListTitle/{listTitleId}")]
-        public async Task<ActionResult<IEnumerable<ListItem>>> GetItemsByListTitle(int listTitleId)
+        public async Task<ActionResult<IEnumerable<ListItemDTO>>> GetItemsByListTitle(int listTitleId)
         {
-            var items = await _context.ListItems
-                                      .Where(li => li.ListTitleId == listTitleId)
-                                      .ToListAsync();
-
-            return items;
+            var items = await _itemDataService.GetItemsByListTitleId(listTitleId);
+            return Ok(items);
         }
 
         // POST: api/ListItem
         [HttpPost]
-        public async Task<ActionResult<ListItem>> CreateListItem(ListItem listItem)
+        public async Task<ActionResult<ListItemDTO>> CreateListItem(ListItemDTO listItemDTO)
         {
-            if (!_context.ListTitles.Any(lt => lt.Id == listItem.ListTitleId))
-            {
-                return BadRequest("Invalid ListTitleId.");
-            }
-
-            _context.ListItems.Add(listItem);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetListItem), new { id = listItem.Id }, listItem);
+            var createdItem = await _itemDataService.CreateListItem(listItemDTO);
+            return Ok(createdItem);
         }
 
         // PUT: api/ListItem/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateListItem(int id, ListItem listItem)
+        public async Task<IActionResult> UpdateListItem(int id, ListItemDTO listItemDTO)
         {
-            if (id != listItem.Id)
+            if (id != listItemDTO.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(listItem).State = EntityState.Modified;
-
             try
             {
-                await _context.SaveChangesAsync();
+                await _itemDataService.UpdateListItem(id, listItemDTO);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -90,7 +78,6 @@ namespace Todo.API.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 
